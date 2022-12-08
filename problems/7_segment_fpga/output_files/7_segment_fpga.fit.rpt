@@ -1,5 +1,5 @@
 Fitter report for 7_segment_fpga
-Fri Dec 09 01:33:44 2022
+Fri Dec 09 01:51:01 2022
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Fri Dec 09 01:33:44 2022       ;
+; Fitter Status                      ; Successful - Fri Dec 09 01:51:01 2022       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; 7_segment_fpga                              ;
 ; Top-level Entity Name              ; top                                         ;
@@ -154,13 +154,13 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 16          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.07        ;
+; Average used               ; 1.08        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.5%      ;
-;     Processors 3-16        ;   0.5%      ;
+;     Processor 2            ;   0.6%      ;
+;     Processors 3-16        ;   0.6%      ;
 +----------------------------+-------------+
 
 
@@ -229,7 +229,7 @@ The pin-out file can be found in C:/Users/nazmievairat/YandexDisk/Labmst and Hua
 ;     -- Dedicated logic registers            ; 41 / 6,272 ( < 1 % ) ;
 ;     -- I/O registers                        ; 0 / 412 ( 0 % )      ;
 ;                                             ;                      ;
-; Total LABs:  partially or completely used   ; 7 / 392 ( 2 % )      ;
+; Total LABs:  partially or completely used   ; 6 / 392 ( 2 % )      ;
 ; Virtual pins                                ; 0                    ;
 ; I/O pins                                    ; 12 / 92 ( 13 % )     ;
 ;     -- Clock pins                           ; 1 / 3 ( 33 % )       ;
@@ -248,7 +248,7 @@ The pin-out file can be found in C:/Users/nazmievairat/YandexDisk/Labmst and Hua
 ; Oscillator blocks                           ; 0 / 1 ( 0 % )        ;
 ; Impedance control blocks                    ; 0 / 4 ( 0 % )        ;
 ; Average interconnect usage (total/H/V)      ; 0.1% / 0.1% / 0.1%   ;
-; Peak interconnect usage (total/H/V)         ; 0.4% / 0.5% / 0.4%   ;
+; Peak interconnect usage (total/H/V)         ; 0.5% / 0.6% / 0.4%   ;
 ; Maximum fan-out                             ; 23                   ;
 ; Highest non-global fan-out                  ; 12                   ;
 ; Total fan-out                               ; 288                  ;
@@ -284,7 +284,7 @@ The pin-out file can be found in C:/Users/nazmievairat/YandexDisk/Labmst and Hua
 ;     -- Dedicated logic registers            ; 41 / 6272 ( < 1 % ) ; 0 / 6272 ( 0 % )               ;
 ;     -- I/O registers                        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
-; Total LABs:  partially or completely used   ; 7 / 392 ( 2 % )     ; 0 / 392 ( 0 % )                ;
+; Total LABs:  partially or completely used   ; 6 / 392 ( 2 % )     ; 0 / 392 ( 0 % )                ;
 ;                                             ;                     ;                                ;
 ; Virtual pins                                ; 0                   ; 0                              ;
 ; I/O pins                                    ; 12                  ; 0                              ;
@@ -613,26 +613,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------+-------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                           ;
-+--------------------------+---------------+---------+-------+--------+----------------------+------------------+---------------------------+
-; Name                     ; Location      ; Fan-Out ; Usage ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------+---------------+---------+-------+--------+----------------------+------------------+---------------------------+
-; clk                      ; PIN_24        ; 23      ; Clock ; yes    ; Global Clock         ; GCLK4            ; --                        ;
-; clk_div:clk_div1|cnt[15] ; FF_X2_Y10_N31 ; 2       ; Clock ; yes    ; Global Clock         ; GCLK1            ; --                        ;
-; clk_div:clk_div2|cnt[21] ; FF_X1_Y9_N21  ; 16      ; Clock ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-+--------------------------+---------------+---------+-------+--------+----------------------+------------------+---------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                          ;
++--------------------------+--------------+---------+-------+--------+----------------------+------------------+---------------------------+
+; Name                     ; Location     ; Fan-Out ; Usage ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------+--------------+---------+-------+--------+----------------------+------------------+---------------------------+
+; clk                      ; PIN_24       ; 23      ; Clock ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; clk_div:clk_div1|cnt[15] ; FF_X2_Y9_N31 ; 2       ; Clock ; yes    ; Global Clock         ; GCLK0            ; --                        ;
+; clk_div:clk_div2|cnt[21] ; FF_X1_Y8_N21 ; 16      ; Clock ; yes    ; Global Clock         ; GCLK2            ; --                        ;
++--------------------------+--------------+---------+-------+--------+----------------------+------------------+---------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                                                     ;
-+--------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name                     ; Location      ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; clk                      ; PIN_24        ; 23      ; 4                                    ; Global Clock         ; GCLK4            ; --                        ;
-; clk_div:clk_div1|cnt[15] ; FF_X2_Y10_N31 ; 2       ; 0                                    ; Global Clock         ; GCLK1            ; --                        ;
-; clk_div:clk_div2|cnt[21] ; FF_X1_Y9_N21  ; 16      ; 6                                    ; Global Clock         ; GCLK3            ; --                        ;
-+--------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                    ;
++--------------------------+--------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                     ; Location     ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------+--------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; clk                      ; PIN_24       ; 23      ; 6                                    ; Global Clock         ; GCLK4            ; --                        ;
+; clk_div:clk_div1|cnt[15] ; FF_X2_Y9_N31 ; 2       ; 0                                    ; Global Clock         ; GCLK0            ; --                        ;
+; clk_div:clk_div2|cnt[21] ; FF_X1_Y8_N21 ; 16      ; 6                                    ; Global Clock         ; GCLK2            ; --                        ;
++--------------------------+--------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------+
@@ -640,37 +640,37 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------+
 ; Routing Resource Type ; Usage                 ;
 +-----------------------+-----------------------+
-; Block interconnects   ; 54 / 32,401 ( < 1 % ) ;
+; Block interconnects   ; 57 / 32,401 ( < 1 % ) ;
 ; C16 interconnects     ; 1 / 1,326 ( < 1 % )   ;
-; C4 interconnects      ; 25 / 21,816 ( < 1 % ) ;
-; Direct links          ; 29 / 32,401 ( < 1 % ) ;
+; C4 interconnects      ; 24 / 21,816 ( < 1 % ) ;
+; Direct links          ; 33 / 32,401 ( < 1 % ) ;
 ; Global clocks         ; 3 / 10 ( 30 % )       ;
-; Local interconnects   ; 46 / 10,320 ( < 1 % ) ;
+; Local interconnects   ; 41 / 10,320 ( < 1 % ) ;
 ; R24 interconnects     ; 2 / 1,289 ( < 1 % )   ;
-; R4 interconnects      ; 22 / 28,186 ( < 1 % ) ;
+; R4 interconnects      ; 23 / 28,186 ( < 1 % ) ;
 +-----------------------+-----------------------+
 
 
 +---------------------------------------------------------------------------+
 ; LAB Logic Elements                                                        ;
 +---------------------------------------------+-----------------------------+
-; Number of Logic Elements  (Average = 10.57) ; Number of LABs  (Total = 7) ;
+; Number of Logic Elements  (Average = 12.33) ; Number of LABs  (Total = 6) ;
 +---------------------------------------------+-----------------------------+
-; 1                                           ; 1                           ;
+; 1                                           ; 0                           ;
 ; 2                                           ; 0                           ;
 ; 3                                           ; 0                           ;
 ; 4                                           ; 0                           ;
-; 5                                           ; 1                           ;
+; 5                                           ; 0                           ;
 ; 6                                           ; 0                           ;
 ; 7                                           ; 0                           ;
 ; 8                                           ; 0                           ;
 ; 9                                           ; 0                           ;
-; 10                                          ; 0                           ;
-; 11                                          ; 2                           ;
+; 10                                          ; 1                           ;
+; 11                                          ; 3                           ;
 ; 12                                          ; 0                           ;
 ; 13                                          ; 0                           ;
 ; 14                                          ; 0                           ;
-; 15                                          ; 2                           ;
+; 15                                          ; 1                           ;
 ; 16                                          ; 1                           ;
 +---------------------------------------------+-----------------------------+
 
@@ -678,7 +678,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------+
 ; LAB-wide Signals                                                 ;
 +------------------------------------+-----------------------------+
-; LAB-wide Signals  (Average = 0.71) ; Number of LABs  (Total = 7) ;
+; LAB-wide Signals  (Average = 0.83) ; Number of LABs  (Total = 6) ;
 +------------------------------------+-----------------------------+
 ; 1 Clock                            ; 5                           ;
 +------------------------------------+-----------------------------+
@@ -687,24 +687,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                        ;
 +----------------------------------------------+-----------------------------+
-; Number of Signals Sourced  (Average = 14.43) ; Number of LABs  (Total = 7) ;
+; Number of Signals Sourced  (Average = 16.83) ; Number of LABs  (Total = 6) ;
 +----------------------------------------------+-----------------------------+
 ; 0                                            ; 0                           ;
-; 1                                            ; 1                           ;
+; 1                                            ; 0                           ;
 ; 2                                            ; 1                           ;
 ; 3                                            ; 0                           ;
 ; 4                                            ; 0                           ;
 ; 5                                            ; 0                           ;
 ; 6                                            ; 0                           ;
-; 7                                            ; 1                           ;
+; 7                                            ; 0                           ;
 ; 8                                            ; 0                           ;
 ; 9                                            ; 0                           ;
 ; 10                                           ; 0                           ;
-; 11                                           ; 0                           ;
-; 12                                           ; 0                           ;
+; 11                                           ; 1                           ;
+; 12                                           ; 1                           ;
 ; 13                                           ; 0                           ;
 ; 14                                           ; 0                           ;
-; 15                                           ; 1                           ;
+; 15                                           ; 0                           ;
 ; 16                                           ; 0                           ;
 ; 17                                           ; 0                           ;
 ; 18                                           ; 0                           ;
@@ -728,19 +728,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                       ;
 +-------------------------------------------------+-----------------------------+
-; Number of Signals Sourced Out  (Average = 6.57) ; Number of LABs  (Total = 7) ;
+; Number of Signals Sourced Out  (Average = 8.33) ; Number of LABs  (Total = 6) ;
 +-------------------------------------------------+-----------------------------+
 ; 0                                               ; 0                           ;
-; 1                                               ; 2                           ;
+; 1                                               ; 1                           ;
 ; 2                                               ; 0                           ;
 ; 3                                               ; 0                           ;
 ; 4                                               ; 0                           ;
-; 5                                               ; 2                           ;
+; 5                                               ; 1                           ;
 ; 6                                               ; 0                           ;
 ; 7                                               ; 1                           ;
 ; 8                                               ; 0                           ;
 ; 9                                               ; 0                           ;
-; 10                                              ; 0                           ;
+; 10                                              ; 1                           ;
 ; 11                                              ; 1                           ;
 ; 12                                              ; 0                           ;
 ; 13                                              ; 0                           ;
@@ -753,14 +753,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                       ;
 +---------------------------------------------+-----------------------------+
-; Number of Distinct Inputs  (Average = 5.86) ; Number of LABs  (Total = 7) ;
+; Number of Distinct Inputs  (Average = 7.17) ; Number of LABs  (Total = 6) ;
 +---------------------------------------------+-----------------------------+
 ; 0                                           ; 0                           ;
-; 1                                           ; 3                           ;
-; 2                                           ; 2                           ;
+; 1                                           ; 2                           ;
+; 2                                           ; 1                           ;
 ; 3                                           ; 0                           ;
 ; 4                                           ; 0                           ;
-; 5                                           ; 0                           ;
+; 5                                           ; 1                           ;
 ; 6                                           ; 0                           ;
 ; 7                                           ; 0                           ;
 ; 8                                           ; 0                           ;
@@ -906,7 +906,7 @@ This will disable optimization of problematic paths and expose them for further 
 ; Source Register          ; Destination Register     ; Delay Added in ns ;
 +--------------------------+--------------------------+-------------------+
 ; clk_div:clk_div2|cnt[21] ; clk_div:clk_div2|cnt[21] ; 4.060             ;
-; clk_div:clk_div1|cnt[15] ; clk_div:clk_div1|cnt[15] ; 3.801             ;
+; clk_div:clk_div1|cnt[15] ; clk_div:clk_div1|cnt[15] ; 3.800             ;
 +--------------------------+--------------------------+-------------------+
 Note: This table only shows the top 2 path(s) that have the largest delay added for hold.
 
@@ -950,7 +950,7 @@ Info (176353): Automatically promoted node clk_div:clk_div1|cnt[15]  File: C:/Us
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:00
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -971,10 +971,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/Users/nazmievairat/YandexDisk/Labmst and Huawei/DREC-fpga/problems/7_segment_fpga/output_files/7_segment_fpga.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 6471 megabytes
-    Info: Processing ended: Fri Dec 09 01:33:44 2022
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 6474 megabytes
+    Info: Processing ended: Fri Dec 09 01:51:01 2022
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:05
 
 
 +----------------------------+

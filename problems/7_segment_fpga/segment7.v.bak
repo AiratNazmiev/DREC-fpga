@@ -22,11 +22,6 @@ end
 // k -> Number of bits up from j’th position
 
 wire [3:0]d = data[i * 4 +: 4];
-//wire [3:0]d = i == 2'h0 ? data[3:0] :
-//				  i == 2'h1 ? data[7:4] :
-//				  i == 2'h2 ? data[11:8] :
-//								  data[15:12];
-
 
 always @(*) begin
 	case (d)

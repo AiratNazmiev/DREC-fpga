@@ -1,0 +1,7 @@
+module lecture_4(
+	input wire clk_50Mhz,
+	output wire [7:0]ds_seg,
+	output wire [3:0]ds_com
+);
+
+endmodule

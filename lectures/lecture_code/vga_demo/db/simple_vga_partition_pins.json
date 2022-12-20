@@ -1,0 +1,85 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "video_r[0]",
+					"strict" : false
+				},
+				{
+					"name" : "video_r[1]",
+					"strict" : false
+				},
+				{
+					"name" : "video_r[2]",
+					"strict" : false
+				},
+				{
+					"name" : "video_r[3]",
+					"strict" : false
+				},
+				{
+					"name" : "video_r[4]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[0]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[1]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[2]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[3]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[4]",
+					"strict" : false
+				},
+				{
+					"name" : "video_g[5]",
+					"strict" : false
+				},
+				{
+					"name" : "video_b[0]",
+					"strict" : false
+				},
+				{
+					"name" : "video_b[1]",
+					"strict" : false
+				},
+				{
+					"name" : "video_b[2]",
+					"strict" : false
+				},
+				{
+					"name" : "video_b[3]",
+					"strict" : false
+				},
+				{
+					"name" : "video_b[4]",
+					"strict" : false
+				},
+				{
+					"name" : "video_h_sync",
+					"strict" : false
+				},
+				{
+					"name" : "video_v_sync",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50Mhz",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

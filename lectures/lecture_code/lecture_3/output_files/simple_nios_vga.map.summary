@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Dec 20 14:02:59 2022
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : simple_nios_vga
+Top-level Entity Name : simple_nios_vga
+Family : Cyclone IV E
+Total logic elements : 6,281
+    Total combinational functions : 4,796
+    Dedicated logic registers : 3,739
+Total registers : 3739
+Total pins : 62
+Total virtual pins : 0
+Total memory bits : 149,296
+Embedded Multiplier 9-bit elements : 8
+Total PLLs : 1

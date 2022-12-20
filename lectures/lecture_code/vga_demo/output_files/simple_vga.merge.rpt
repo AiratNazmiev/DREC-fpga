@@ -1,0 +1,272 @@
+Partition Merge report for simple_vga
+Sun Dec 18 02:22:37 2022
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Partition Statistics
+  5. Partition Merge Partition Pin Processing
+  6. Partition Merge Resource Usage Summary
+  7. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Partition Merge Summary                                                          ;
++------------------------------------+---------------------------------------------+
+; Partition Merge Status             ; Successful - Sun Dec 18 02:22:37 2022       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; simple_vga                                  ;
+; Top-level Entity Name              ; simple_vga                                  ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 51                                          ;
+;     Total combinational functions  ; 51                                          ;
+;     Dedicated logic registers      ; 21                                          ;
+; Total registers                    ; 21                                          ;
+; Total pins                         ; 19                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                               ;
++---------------------------------------------+-----+--------------------------------+
+; Statistic                                   ; Top ; hard_block:auto_generated_inst ;
++---------------------------------------------+-----+--------------------------------+
+; Estimated Total logic elements              ; 51  ; 0                              ;
+;                                             ;     ;                                ;
+; Total combinational functions               ; 51  ; 0                              ;
+; Logic element usage by number of LUT inputs ;     ;                                ;
+;     -- 4 input functions                    ; 12  ; 0                              ;
+;     -- 3 input functions                    ; 11  ; 0                              ;
+;     -- <=2 input functions                  ; 28  ; 0                              ;
+;                                             ;     ;                                ;
+; Logic elements by mode                      ;     ;                                ;
+;     -- normal mode                          ; 33  ; 0                              ;
+;     -- arithmetic mode                      ; 18  ; 0                              ;
+;                                             ;     ;                                ;
+; Total registers                             ; 21  ; 0                              ;
+;     -- Dedicated logic registers            ; 21  ; 0                              ;
+;     -- I/O registers                        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Virtual pins                                ; 0   ; 0                              ;
+; I/O pins                                    ; 19  ; 0                              ;
+; Embedded Multiplier 9-bit elements          ; 0   ; 0                              ;
+; Total memory bits                           ; 0   ; 0                              ;
+; Total RAM block bits                        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Connections                                 ;     ;                                ;
+;     -- Input Connections                    ; 0   ; 0                              ;
+;     -- Registered Input Connections         ; 0   ; 0                              ;
+;     -- Output Connections                   ; 0   ; 0                              ;
+;     -- Registered Output Connections        ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Internal Connections                        ;     ;                                ;
+;     -- Total Connections                    ; 223 ; 0                              ;
+;     -- Registered Connections               ; 92  ; 0                              ;
+;                                             ;     ;                                ;
+; External Connections                        ;     ;                                ;
+;     -- Top                                  ; 0   ; 0                              ;
+;     -- hard_block:auto_generated_inst       ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Partition Interface                         ;     ;                                ;
+;     -- Input Ports                          ; 1   ; 0                              ;
+;     -- Output Ports                         ; 18  ; 0                              ;
+;     -- Bidir Ports                          ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Registered Ports                            ;     ;                                ;
+;     -- Registered Input Ports               ; 0   ; 0                              ;
+;     -- Registered Output Ports              ; 0   ; 0                              ;
+;                                             ;     ;                                ;
+; Port Connectivity                           ;     ;                                ;
+;     -- Input Ports driven by GND            ; 0   ; 0                              ;
+;     -- Output Ports driven by GND           ; 0   ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0   ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0   ; 0                              ;
+;     -- Input Ports with no Source           ; 0   ; 0                              ;
+;     -- Output Ports with no Source          ; 0   ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0   ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0   ; 0                              ;
++---------------------------------------------+-----+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++---------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                        ;
++----------------------------+-----------+---------------+----------+-------------+
+; Name                       ; Partition ; Type          ; Location ; Status      ;
++----------------------------+-----------+---------------+----------+-------------+
+; clk_50Mhz                  ; Top       ; Input Port    ; n/a      ;             ;
+;     -- clk_50Mhz           ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- clk_50Mhz~input     ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_b[0]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_b[0]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_b[0]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_b[1]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_b[1]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_b[1]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_b[2]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_b[2]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_b[2]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_b[3]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_b[3]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_b[3]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_b[4]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_b[4]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_b[4]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[0]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[0]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[0]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[1]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[1]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[1]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[2]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[2]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[2]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[3]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[3]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[3]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[4]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[4]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[4]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_g[5]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_g[5]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_g[5]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_h_sync               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_h_sync        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_h_sync~output ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_r[0]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_r[0]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_r[0]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_r[1]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_r[1]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_r[1]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_r[2]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_r[2]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_r[2]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_r[3]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_r[3]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_r[3]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_r[4]                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_r[4]          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_r[4]~output   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
+; video_v_sync               ; Top       ; Output Port   ; n/a      ;             ;
+;     -- video_v_sync        ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- video_v_sync~output ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                            ;           ;               ;          ;             ;
++----------------------------+-----------+---------------+----------+-------------+
+
+
++---------------------------------------------------------+
+; Partition Merge Resource Usage Summary                  ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 51        ;
+;                                             ;           ;
+; Total combinational functions               ; 51        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 12        ;
+;     -- 3 input functions                    ; 11        ;
+;     -- <=2 input functions                  ; 28        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 33        ;
+;     -- arithmetic mode                      ; 18        ;
+;                                             ;           ;
+; Total registers                             ; 21        ;
+;     -- Dedicated logic registers            ; 21        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 19        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk_25Mhz ;
+; Maximum fan-out                             ; 21        ;
+; Total fan-out                               ; 223       ;
+; Average fan-out                             ; 2.03      ;
++---------------------------------------------+-----------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Partition Merge
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Sun Dec 18 02:22:36 2022
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off simple_vga -c simple_vga --merge=on
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Critical Warning (138067): Current license file does not support incremental compilation. The Quartus Prime software removes all the user-specified design partitions in the design automatically.
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35002): Resolved and merged 1 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Critical Warning (138067): Current license file does not support incremental compilation. The Quartus Prime software removes all the user-specified design partitions in the design automatically.
+Info (21057): Implemented 70 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 18 output pins
+    Info (21061): Implemented 51 logic cells
+Info: Quartus Prime Partition Merge was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4687 megabytes
+    Info: Processing ended: Sun Dec 18 02:22:37 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

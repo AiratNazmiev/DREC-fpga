@@ -1,0 +1,532 @@
+#include "../nios_vga_bsp/system.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <altera_avalon_sgdma.h>
+#include <altera_avalon_sgdma_descriptor.h>
+#include <altera_avalon_sgdma_regs.h>
+#include "Font5x7.h"
+#include "altera_up_avalon_parallel_port.h"
+
+// FIELD DIMS
+#define VIDEO_H 480
+#define VIDEO_W 640
+#define VIDEO_SIZE ((alt_u32)(VIDEO_H * VIDEO_W )+1)
+
+#define VIDEO_CENTRE_H (VIDEO_H/2)
+#define VIDEO_CENTRE_W (VIDEO_W/2)
+//
+
+// COLORS
+#define WHITE 0xff
+#define BLUE 0x03
+#define GREEN (0x07 << 2)
+#define RED (0x07 << 5)
+#define BLACK 0x00
+//
+
+
+alt_sgdma_dev* dma;
+alt_sgdma_descriptor ds[6];
+alt_u8 *fb;
+alt_u8 dma_chain_len=0;
+alt_up_parallel_port_dev *keys;
+alt_u8 frame;
+
+void dma_callback(void *context){
+	for(alt_u8 i=0;i<dma_chain_len;i++) {
+		if (!(ds[i].control & ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK)){
+				ds[i].control |= ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK;
+				ds[i].actual_bytes_transferred = 0;
+				if(i==0)
+					frame++;
+		}
+	}
+}
+
+#define BORDER_COLOR WHITE
+#define BACKGROUND_COLOR BLACK
+
+#define UPPER_BORDER_H 15
+#define LOWER_BORDER_H 15
+#define FIELD_UPPER_BORDER UPPER_BORDER_H
+#define FIELD_LOWER_BORDER (VIDEO_H - LOWER_BORDER_H)
+
+void vga_pattern(){
+	alt_u8 *tfb;
+	tfb = fb;
+	for(alt_u32 i=0; i < VIDEO_H; ++i)
+		for(alt_u32 j=0; j < VIDEO_W; ++j){
+			if ((i < UPPER_BORDER_H) || (i > VIDEO_H-LOWER_BORDER_H)) { // frame
+				*tfb = BORDER_COLOR;
+			} else {
+				*tfb = BACKGROUND_COLOR;
+			}
+
+			tfb++;
+		}
+}
+
+#define TEXT_PLACE_H (VIDEO_H-10)
+
+void putch(alt_u16 x, alt_u16 y, alt_u8 ch, alt_u8 color){
+	alt_u8 *tfb;
+	tfb = fb;
+	tfb += y*VIDEO_W + x;
+	ch -=0x20;
+	for(alt_u8 i=0;i<8;i++){
+		for(alt_u8 j=0;j<5;j++) {
+			if (Font5x7[ch*5+j] & (1<<i)) *tfb = color;
+			tfb++;
+		}
+		tfb += VIDEO_W-5;
+	}
+}
+
+void putstr(alt_u16 x, alt_u16 y, char *ch, alt_u8 color){
+	while (*ch) {
+		putch(x,y,(alt_u8)*ch, color);
+		ch++;
+		x+=6;
+	}
+}
+
+
+// BUTTONS
+#define button_1(buttons) !((buttons) & 1)
+#define button_2(buttons) !((buttons) & 8)
+#define button_3(buttons) !((buttons) & 4)
+#define button_4(buttons) !((buttons) & 2)
+//
+
+#define MAX_GOALS 5
+
+// PLAYER
+#define PLAYER_W 5
+#define PLAYER_H 100
+
+#define PLAYER_FIRST_SHIFT 1
+#define PLAYER_SECOND_SHIFT 5
+
+#define PLAYER_INIT_H ((VIDEO_H - PLAYER_H)/2)
+
+//#define PLAYER_STEP 2
+
+typedef enum DIRECTION {UP, DOWN, IDLE} DIRECTION;
+
+typedef struct Player {
+	alt_u16 x; // upper-left corner
+	alt_u16 y;
+	alt_u8 color;
+} Player;
+
+// It's guaranteed that shift is valid
+// coordinates change must be done after drawing
+void draw_player(alt_u8 *fb, Player *player, DIRECTION dir) {
+	alt_u16 i, j;
+	switch (dir) {
+	case UP:
+		for (i = player->x; i < player->x + PLAYER_W; ++i) { // WHY ball->w and ball->h don't work?
+			fb[(player->y + PLAYER_H - 1)*VIDEO_W + i] = player->y <= FIELD_LOWER_BORDER ?
+														 BACKGROUND_COLOR : BORDER_COLOR;
+			for (j = player->y - 1; j < player->y + PLAYER_H - 1; ++j) {
+				fb[j*VIDEO_W + i] = player->color;
+			}
+		}
+	break;
+
+	case DOWN:
+		for (i = player->x; i < player->x + PLAYER_W; ++i) { // WHY ball->w and ball->h don't work?
+			fb[player->y*VIDEO_W + i] = player->y >= FIELD_UPPER_BORDER ?
+										BACKGROUND_COLOR : BORDER_COLOR;
+			for (j = player->y + 1; j < player->y + PLAYER_H + 1; ++j) {
+				fb[j*VIDEO_W + i] = player->color;
+			}
+		}
+	break;
+
+	case IDLE:
+		for (i = player->x; i < player->x + PLAYER_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = player->y; j < player->y + PLAYER_H; ++j) {
+				fb[j*VIDEO_W + i] = player->color;
+			}
+		}
+	break;
+
+	}
+}
+
+//
+
+//BALL
+#define BALL_H 5
+#define BALL_W 5
+
+#define BALL_INIT_MAX_H (VIDEO_H - 100)
+#define BALL_INIT_MIN_H 100
+
+#define BALL_LEFT_BORDER (PLAYER_FIRST_SHIFT + PLAYER_W)
+#define BALL_RIGHT_BORDER (VIDEO_W-PLAYER_SECOND_SHIFT)
+
+typedef enum BALL_MOVEMENT {UR, LR, LL, UL, NO} BALL_MOVEMENT;
+
+typedef struct Ball {
+	alt_u16 x; // upper-left corner
+	alt_u16 y;
+	BALL_MOVEMENT movement;
+} Ball;
+
+alt_u8 ball_sprite[BALL_H][BALL_W] = {
+		{WHITE, WHITE, WHITE, WHITE, WHITE},
+		{WHITE, BLACK, WHITE, BLACK, WHITE},
+		{WHITE, WHITE, WHITE, WHITE, WHITE},
+		{WHITE, BLACK, WHITE, BLACK, WHITE},
+		{WHITE, WHITE, WHITE, WHITE, WHITE}
+};
+
+
+void delete_ball(alt_u8 *fb, Ball *ball) {
+	alt_u16 i, j;
+	for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+		for (j = ball->y; j < ball->y + BALL_H; ++j) {
+			fb[j*VIDEO_W + i] = BACKGROUND_COLOR;
+		}
+	}
+}
+
+// It's guaranteed that movement is valid
+// coordinates change must be done after drawing
+void draw_ball(alt_u8 *fb, Ball *ball, BALL_MOVEMENT move) {
+	alt_u16 i, j;
+
+	switch(move) {
+	case NO:
+		for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = ball->y; j < ball->y + BALL_H; ++j) {
+				fb[j*VIDEO_W + i] = ball_sprite[j - ball->y][i - ball->x];
+			}
+		}
+	break;
+
+	case UR:
+		delete_ball(fb, ball);
+		for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = ball->y; j < ball->y + BALL_H; ++j) {
+				fb[(j-1)*VIDEO_W + (i+1)] = ball_sprite[j - ball->y][i - ball->x];
+			}
+		}
+	break;
+
+	case LR:
+		delete_ball(fb, ball);
+		for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = ball->y; j < ball->y + BALL_H; ++j) {
+				fb[(j+1)*VIDEO_W + (i+1)] = ball_sprite[j - ball->y][i - ball->x];
+			}
+		}
+	break;
+
+	case LL:
+		delete_ball(fb, ball);
+		for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = ball->y; j < ball->y + BALL_H; ++j) {
+				fb[(j+1)*VIDEO_W + (i-1)] = ball_sprite[j - ball->y][i - ball->x];
+			}
+		}
+	break;
+
+	case UL:
+		delete_ball(fb, ball);
+		for (i = ball->x; i < ball->x + BALL_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = ball->y; j < ball->y + BALL_H; ++j) {
+				fb[(j-1)*VIDEO_W + (i-1)] = ball_sprite[j - ball->y][i - ball->x];
+			}
+		}
+	break;
+	}
+}
+//
+
+
+typedef enum PLAYER {FIRST, SECOND} PLAYER;
+
+void display_points(alt_u8 *fb, PLAYER player, alt_u8 points, char *disp_points[6]) {
+	alt_u16 i, j;
+	switch (player) {
+	case FIRST:
+		for (i = 80; i < 150; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = FIELD_LOWER_BORDER+1; j < VIDEO_H; ++j) {
+				fb[j*VIDEO_W + i] = BORDER_COLOR;
+			}
+		}
+
+		putstr(80, TEXT_PLACE_H, disp_points[points], RED);
+	break;
+
+	case SECOND:
+		for (i = VIDEO_W - 80; i < VIDEO_W; ++i) { // WHY ball->w and ball->h don't work?
+			for (j = FIELD_LOWER_BORDER+1; j < VIDEO_H; ++j) {
+				fb[j*VIDEO_W + i] = BORDER_COLOR;
+			}
+		}
+
+		putstr(VIDEO_W - 80, TEXT_PLACE_H, disp_points[points], GREEN);
+	break;
+	}
+}
+
+
+void display_final_message(alt_u8 *fb, PLAYER winner, alt_u8 points_first, alt_u8 points_second) {
+	if (points_first == MAX_GOALS) {
+		putstr(VIDEO_CENTRE_W, VIDEO_CENTRE_H, "RED WINS", GREEN);
+	} else {
+		putstr(VIDEO_CENTRE_W, VIDEO_CENTRE_H, "GREEN WINS", GREEN);
+	}
+}
+
+
+int random_int(alt_u16 lower, alt_u16 upper) {
+	return rand() % (upper - lower) + lower;
+}
+
+
+int main() {	// DMA
+	dma =  alt_avalon_sgdma_open("/dev/sgdma_0");
+	// KEYS
+	keys =  alt_up_parallel_port_open_dev("/dev/parallel_port_0");
+	fb = SDRAM_CONTROLLER_0_BASE;
+	frame = 0;
+	alt_u8 tframe=0;
+	alt_u32 i, j;
+	alt_u32 l;
+	alt_u32 buttons;
+	i = 0;
+	j = 0;
+
+
+	while (j<VIDEO_SIZE){
+		l = VIDEO_SIZE - j > 0xFFFF ? 0xFFFF : VIDEO_SIZE - j; // 16-bit counter, packet length is limited
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&ds[i], &ds[i+1], (alt_u32*)(fb+j), l, 0, i==0 ? 1: 0, i == 0 ? 1 : 0, 0); // descriptors, seamless transmission even with limited length
+		i++;
+		j+=l;
+	}
+	i--;
+	ds[i].next = (alt_u32*)&ds[0]; // back to zeroth descriptors
+	dma_chain_len = i+1;
+	// dma interruption handler
+ 	alt_avalon_sgdma_register_callback(dma, dma_callback, ALTERA_AVALON_SGDMA_CONTROL_IE_DESC_COMPLETED_MSK | ALTERA_AVALON_SGDMA_CONTROL_IE_GLOBAL_MSK, NULL);
+
+	vga_pattern();
+
+
+	// GAME //
+
+	putstr(VIDEO_CENTRE_W-80, TEXT_PLACE_H,"Ping-Pong Complete Edition (c)", BLUE);
+
+	char *disp_points[6];
+	disp_points[0] = "zero";
+	disp_points[1] = "X";
+	disp_points[2] = "XX";
+	disp_points[3] = "XXX";
+	disp_points[4] = "XXXX";
+	disp_points[5] = "XXXXX";
+
+	putstr(80, TEXT_PLACE_H, disp_points[0], RED);
+	putstr(VIDEO_W - 80, TEXT_PLACE_H, disp_points[0], GREEN);
+
+	// Players init
+	Player first = {0+PLAYER_FIRST_SHIFT, PLAYER_INIT_H, RED};
+	Player second = {VIDEO_W-PLAYER_SECOND_SHIFT, PLAYER_INIT_H, GREEN};
+
+	draw_player(fb, &first, IDLE);
+	draw_player(fb, &second, IDLE);
+
+	// Ball init
+	Ball ball = {VIDEO_CENTRE_W, random_int(BALL_INIT_MIN_H, BALL_INIT_MAX_H), random_int(0, 4)};
+	draw_ball(fb, &ball, NO);
+	//
+
+	alt_u8 first_points = 0;
+	alt_u8 second_points = 0;
+
+	alt_u8 goal_flag = 0;
+	alt_u8 END_flag = 0;
+
+	alt_avalon_sgdma_do_async_transfer(dma, &ds[0]);
+
+	while(1) {
+		buttons = alt_up_parallel_port_read_data(keys); // buttons
+		if (frame!=tframe) {
+			tframe = frame;
+
+			// end of the game
+			if (END_flag) {
+				asm("br . + 4"); // ???????????????????
+				continue;
+			}
+
+			//
+
+			// goal -> bring ball back to initial position
+			if (goal_flag) {
+				delete_ball(fb, &ball);
+				ball.x = VIDEO_CENTRE_W;
+				ball.y = random_int(BALL_INIT_MIN_H, BALL_INIT_MAX_H);
+				ball.movement = random_int(0, 4);
+				draw_ball(fb, &ball, NO);
+
+				goal_flag = 0;
+			}
+			//
+
+
+			switch (ball.movement) {
+				case UR:
+					if (ball.y <= FIELD_UPPER_BORDER) { // collision with upper border
+						ball.movement = LR;
+					} else if (ball.x + BALL_W >= BALL_RIGHT_BORDER) { // collision with right border
+						if (ball.y < second.y || ball.y > second.y + PLAYER_H) { // goal to second player
+							goal_flag = 1;
+							++first_points;
+							display_points(fb, FIRST, first_points, disp_points);
+
+							if (first_points == MAX_GOALS) {
+								END_flag = 1;
+							}
+
+							asm("br . + 4"); // ???????????????????
+							continue;
+						} else { // second player saved the target
+							ball.movement = UL;
+						}
+					} else { // nothing happened
+						draw_ball(fb, &ball, UR);
+						++ball.x;
+						--ball.y;
+					}
+				break;
+
+				case LR:
+					if (ball.y + BALL_H >= FIELD_LOWER_BORDER) { // collision with lower border
+						ball.movement = UR;
+					} else if (ball.x + BALL_W >= BALL_RIGHT_BORDER) { // collision with right border
+						if (ball.y < second.y || ball.y > second.y + PLAYER_H) {  // goal to first player
+							goal_flag = 1;
+
+							++first_points;
+							display_points(fb, FIRST, first_points, disp_points);
+
+							if (first_points == MAX_GOALS) {
+								END_flag = 1;
+							}
+
+							asm("br . + 4"); // ???????????????????
+							continue;
+						} else { // first player saved the target
+							ball.movement = LL;
+						}
+
+					} else { // nothing happened
+						draw_ball(fb, &ball, LR);
+						++ball.x;
+						++ball.y;
+					}
+				break;
+
+				case LL:
+					if (ball.y + BALL_H >= FIELD_LOWER_BORDER) { // collision with lower border
+						ball.movement = UL;
+					} else if (ball.x <= BALL_LEFT_BORDER) { // collision with left border
+						if (ball.y < first.y || ball.y > first.y + PLAYER_H) { // goal to first player
+							goal_flag = 1;
+
+							++second_points;
+							display_points(fb, SECOND, second_points, disp_points);
+
+							if (second_points == MAX_GOALS) {
+								END_flag = 1;
+							}
+
+							asm("br . + 4"); // ???????????????????
+							continue;
+						} else { // first player saved the target
+							ball.movement = LR;
+						}
+					} else { // nothing happened
+						draw_ball(fb, &ball, LL);
+						--ball.x;
+						++ball.y;
+					}
+				break;
+
+				case UL:
+					if (ball.y <= FIELD_UPPER_BORDER) { // collision with lower border
+						ball.movement = LL;
+					} else if (ball.x <= BALL_LEFT_BORDER) { // collision with left border
+						if (ball.y < first.y || ball.y > first.y + PLAYER_H) { // goal to second player
+							goal_flag = 1;
+
+							++second_points;
+							display_points(fb, SECOND, second_points, disp_points);
+
+							if (second_points == MAX_GOALS) {
+								END_flag = 1;
+							}
+
+							asm("br . + 4"); // ???????????????????
+							continue;
+						} else { // first player saved the target
+							ball.movement = UR;
+						}
+
+					} else { //nothing happened
+						draw_ball(fb, &ball, UL);
+						--ball.x;
+						--ball.y;
+					}
+				break;
+
+				case NO:
+				//empty
+				break;
+			}
+
+
+
+
+			// Handle buttons
+			if (button_1(buttons)) { // first DOWN
+				if (first.y + PLAYER_H <= FIELD_LOWER_BORDER) {
+					draw_player(fb, &first, DOWN);
+					++first.y;
+				}
+			}
+
+			if (button_2(buttons)) { // first UP
+				if (first.y > FIELD_UPPER_BORDER) {
+					draw_player(fb, &first, UP);
+					--first.y;
+				}
+			}
+
+			if (button_3(buttons)) { // second DOWN
+				if (second.y + PLAYER_H <= FIELD_LOWER_BORDER) {
+					draw_player(fb, &second, DOWN);
+					++second.y;
+				}
+			}
+
+			if (button_4(buttons)) { // second UP
+				if (second.y > FIELD_UPPER_BORDER) {
+					draw_player(fb, &second, UP);
+					--second.y;
+				}
+			}
+			//
+
+		}
+
+
+		asm("br . + 4");
+	}
+}

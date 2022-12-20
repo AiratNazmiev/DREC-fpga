@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="239" />
+   <irq preferredWidth="34" />
+   <name preferredWidth="181" />
+   <inputclock preferredWidth="181" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library,Library/University Program,Library/University Program/Communications,Project,Library/University Program/Generic IO" />
+ <window width="2582" height="1550" x="-315" y="271" />
+</preferences>

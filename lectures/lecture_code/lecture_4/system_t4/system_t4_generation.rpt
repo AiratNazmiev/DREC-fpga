@@ -1,0 +1,122 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\nazmievairat\YandexDisk\Labmst_Huawei\DREC-fpga\lectures\lecture_code\lecture_4\system_t4.qsys --block-symbol-file --output-directory=C:\Users\nazmievairat\YandexDisk\Labmst_Huawei\DREC-fpga\lectures\lecture_code\lecture_4\system_t4 --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading lecture_4/system_t4.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.1]
+Progress: Parameterizing module clk_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
+Progress: Parameterizing module master_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding sgdma_0 [altera_avalon_sgdma 18.1]
+Progress: Parameterizing module sgdma_0
+Progress: Adding st2led_0 [st2led 1.0]
+Progress: Parameterizing module st2led_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_t4.sgdma_0: Scatter-Gather DMA Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\nazmievairat\YandexDisk\Labmst_Huawei\DREC-fpga\lectures\lecture_code\lecture_4\system_t4.qsys --synthesis=VERILOG --output-directory=C:\Users\nazmievairat\YandexDisk\Labmst_Huawei\DREC-fpga\lectures\lecture_code\lecture_4\system_t4\synthesis --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading lecture_4/system_t4.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.1]
+Progress: Parameterizing module clk_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
+Progress: Parameterizing module master_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding sgdma_0 [altera_avalon_sgdma 18.1]
+Progress: Parameterizing module sgdma_0
+Progress: Adding st2led_0 [st2led 1.0]
+Progress: Parameterizing module st2led_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_t4.sgdma_0: Scatter-Gather DMA Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: system_t4: Generating system_t4 "system_t4" for QUARTUS_SYNTH
+Info: master_0: "system_t4" instantiated altera_jtag_avalon_master "master_0"
+Info: nios2_gen2_0: "system_t4" instantiated altera_nios2_gen2 "nios2_gen2_0"
+Info: onchip_memory2_0: Starting RTL generation for module 'system_t4_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/users/nazmievairat/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_t4_onchip_memory2_0 --dir=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0089_onchip_memory2_0_gen/ --quartus_dir=C:/users/nazmievairat/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0089_onchip_memory2_0_gen//system_t4_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0: Done RTL generation for module 'system_t4_onchip_memory2_0'
+Info: onchip_memory2_0: "system_t4" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: sgdma_0: Starting RTL generation for module 'system_t4_sgdma_0'
+Info: sgdma_0:   Generation command is [exec C:/users/nazmievairat/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma -- C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma/generate_rtl.pl --name=system_t4_sgdma_0 --dir=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0090_sgdma_0_gen/ --quartus_dir=C:/users/nazmievairat/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0090_sgdma_0_gen//system_t4_sgdma_0_component_configuration.pl  --do_build_sim=0  ]
+Info: sgdma_0: Done RTL generation for module 'system_t4_sgdma_0'
+Info: sgdma_0: "system_t4" instantiated altera_avalon_sgdma "sgdma_0"
+Info: st2led_0: "system_t4" instantiated st2led "st2led_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "system_t4" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "system_t4" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "system_t4" instantiated altera_reset_controller "rst_controller"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: cpu: Starting RTL generation for module 'system_t4_nios2_gen2_0_cpu'
+Info: cpu:   Generation command is [exec C:/Users/nazmievairat/intelFPGA_lite/18.1/quartus/bin64//eperlcmd.exe -I C:/Users/nazmievairat/intelFPGA_lite/18.1/quartus/bin64//perl/lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/users/nazmievairat/intelfpga_lite/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_t4_nios2_gen2_0_cpu --dir=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0102_cpu_gen/ --quartus_bindir=C:/Users/nazmievairat/intelFPGA_lite/18.1/quartus/bin64/ --verilog --config=C:/Users/NAZMIE~1/AppData/Local/Temp/alt9343_3939244965034254609.dir/0102_cpu_gen//system_t4_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2022.12.18 00:18:06 (*) Starting Nios II generation
+Info: cpu: # 2022.12.18 00:18:06 (*)   Checking for plaintext license.
+Info: cpu: # 2022.12.18 00:18:06 (*)   Couldn't query license setup in Quartus directory C:/Users/nazmievairat/intelFPGA_lite/18.1/quartus/bin64/
+Info: cpu: # 2022.12.18 00:18:06 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2022.12.18 00:18:06 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2022.12.18 00:18:06 (*)   Plaintext license not found.
+Info: cpu: # 2022.12.18 00:18:06 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2022.12.18 00:18:07 (*)   Couldn't query license setup in Quartus directory C:/Users/nazmievairat/intelFPGA_lite/18.1/quartus/bin64/
+Info: cpu: # 2022.12.18 00:18:07 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2022.12.18 00:18:07 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2022.12.18 00:18:07 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: cpu: # 2022.12.18 00:18:07 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2022.12.18 00:18:07 (*)   Creating all objects for CPU
+Info: cpu: # 2022.12.18 00:18:07 (*)     Testbench
+Info: cpu: # 2022.12.18 00:18:07 (*)     Instruction decoding
+Info: cpu: # 2022.12.18 00:18:07 (*)       Instruction fields
+Info: cpu: # 2022.12.18 00:18:07 (*)       Instruction decodes
+Info: cpu: # 2022.12.18 00:18:07 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2022.12.18 00:18:07 (*)       Instruction controls
+Info: cpu: # 2022.12.18 00:18:07 (*)     Pipeline frontend
+Info: cpu: # 2022.12.18 00:18:07 (*)     Pipeline backend
+Info: cpu: # 2022.12.18 00:18:09 (*)   Generating RTL from CPU objects
+Info: cpu: # 2022.12.18 00:18:10 (*)   Creating encrypted RTL
+Info: cpu: # 2022.12.18 00:18:10 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'system_t4_nios2_gen2_0_cpu'
+Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
+Info: nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
+Info: sgdma_0_csr_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "sgdma_0_csr_translator"
+Info: nios2_gen2_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_gen2_0_data_master_agent"
+Info: sgdma_0_csr_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "sgdma_0_csr_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: sgdma_0_descriptor_read_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "sgdma_0_descriptor_read_limiter"
+Info: Reusing file C:/Users/nazmievairat/YandexDisk/Labmst_Huawei/DREC-fpga/lectures/lecture_code/lecture_4/system_t4/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/Users/nazmievairat/YandexDisk/Labmst_Huawei/DREC-fpga/lectures/lecture_code/lecture_4/system_t4/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/nazmievairat/YandexDisk/Labmst_Huawei/DREC-fpga/lectures/lecture_code/lecture_4/system_t4/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: sgdma_0_m_read_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "sgdma_0_m_read_cmd_width_adapter"
+Info: Reusing file C:/Users/nazmievairat/YandexDisk/Labmst_Huawei/DREC-fpga/lectures/lecture_code/lecture_4/system_t4/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: system_t4: Done "system_t4" with 34 modules, 61 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

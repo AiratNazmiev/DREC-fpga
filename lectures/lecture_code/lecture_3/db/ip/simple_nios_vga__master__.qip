@@ -1,0 +1,3 @@
+set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) clkinter/clkinter.qip]
+set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) clkdriver/clkdriver.qip]
+set_global_assignment -name QIP_FILE [file join $::quartus(qip_path) system_t3/system_t3.qip]

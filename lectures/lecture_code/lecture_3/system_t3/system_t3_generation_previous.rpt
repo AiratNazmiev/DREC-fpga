@@ -1,0 +1,170 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\User\Documents\fpga\lectures\lecture_3\system_t3.qsys --block-symbol-file --output-directory=C:\Users\User\Documents\fpga\lectures\lecture_3\system_t3 --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading lecture_3/system_t3.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.0]
+Progress: Parameterizing module master_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.0]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.0]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding parallel_port_0 [altera_up_avalon_parallel_port 18.0]
+Progress: Parameterizing module parallel_port_0
+Progress: Adding sdram_controller_0 [altera_avalon_new_sdram_controller 18.0]
+Progress: Parameterizing module sdram_controller_0
+Progress: Adding sgdma_0 [altera_avalon_sgdma 18.0]
+Progress: Parameterizing module sgdma_0
+Progress: Adding st2vga_0 [st2vga 1.0]
+Progress: Parameterizing module st2vga_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_t3.parallel_port_0: The Parallel Port is now deprecated. The PIO component (Processor and Peripherals/Peripherals/PIO) should be used instead.
+Info: system_t3.sdram_controller_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: system_t3.sgdma_0: Scatter-Gather DMA Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\User\Documents\fpga\lectures\lecture_3\system_t3.qsys --synthesis=VERILOG --output-directory=C:\Users\User\Documents\fpga\lectures\lecture_3\system_t3\synthesis --family="Cyclone IV E" --part=EP4CE6E22C8
+Progress: Loading lecture_3/system_t3.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.0]
+Progress: Parameterizing module clk_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.0]
+Progress: Parameterizing module master_0
+Progress: Adding nios2_gen2_0 [altera_nios2_gen2 18.0]
+Progress: Parameterizing module nios2_gen2_0
+Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 18.0]
+Progress: Parameterizing module onchip_memory2_0
+Progress: Adding parallel_port_0 [altera_up_avalon_parallel_port 18.0]
+Progress: Parameterizing module parallel_port_0
+Progress: Adding sdram_controller_0 [altera_avalon_new_sdram_controller 18.0]
+Progress: Parameterizing module sdram_controller_0
+Progress: Adding sgdma_0 [altera_avalon_sgdma 18.0]
+Progress: Parameterizing module sgdma_0
+Progress: Adding st2vga_0 [st2vga 1.0]
+Progress: Parameterizing module st2vga_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: system_t3.parallel_port_0: The Parallel Port is now deprecated. The PIO component (Processor and Peripherals/Peripherals/PIO) should be used instead.
+Info: system_t3.sdram_controller_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: system_t3.sgdma_0: Scatter-Gather DMA Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: system_t3: Generating system_t3 "system_t3" for QUARTUS_SYNTH
+Info: master_0: "system_t3" instantiated altera_jtag_avalon_master "master_0"
+Info: nios2_gen2_0: "system_t3" instantiated altera_nios2_gen2 "nios2_gen2_0"
+Info: onchip_memory2_0: Starting RTL generation for module 'system_t3_onchip_memory2_0'
+Info: onchip_memory2_0:   Generation command is [exec C:/intelfpga/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.0/quartus/bin64/perl/lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=system_t3_onchip_memory2_0 --dir=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0002_onchip_memory2_0_gen/ --quartus_dir=C:/intelfpga/18.0/quartus --verilog --config=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0002_onchip_memory2_0_gen//system_t3_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0: Done RTL generation for module 'system_t3_onchip_memory2_0'
+Info: onchip_memory2_0: "system_t3" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info: parallel_port_0: Starting Generation of Parallel Port
+Info: parallel_port_0: "system_t3" instantiated altera_up_avalon_parallel_port "parallel_port_0"
+Info: sdram_controller_0: Starting RTL generation for module 'system_t3_sdram_controller_0'
+Info: sdram_controller_0:   Generation command is [exec C:/intelfpga/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.0/quartus/bin64/perl/lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=system_t3_sdram_controller_0 --dir=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0004_sdram_controller_0_gen/ --quartus_dir=C:/intelfpga/18.0/quartus --verilog --config=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0004_sdram_controller_0_gen//system_t3_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram_controller_0: Done RTL generation for module 'system_t3_sdram_controller_0'
+Info: sdram_controller_0: "system_t3" instantiated altera_avalon_new_sdram_controller "sdram_controller_0"
+Info: sgdma_0: Starting RTL generation for module 'system_t3_sgdma_0'
+Info: sgdma_0:   Generation command is [exec C:/intelfpga/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.0/quartus/bin64/perl/lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma -- C:/intelfpga/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_sgdma/generate_rtl.pl --name=system_t3_sgdma_0 --dir=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0005_sgdma_0_gen/ --quartus_dir=C:/intelfpga/18.0/quartus --verilog --config=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0005_sgdma_0_gen//system_t3_sgdma_0_component_configuration.pl  --do_build_sim=0  ]
+Info: sgdma_0: Done RTL generation for module 'system_t3_sgdma_0'
+Info: sgdma_0: "system_t3" instantiated altera_avalon_sgdma "sgdma_0"
+Info: st2vga_0: "system_t3" instantiated st2vga "st2vga_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "system_t3" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "system_t3" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "system_t3" instantiated altera_reset_controller "rst_controller"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: cpu: Starting RTL generation for module 'system_t3_nios2_gen2_0_cpu'
+Info: cpu:   Generation command is [exec C:/intelFPGA/18.0/quartus/bin64//eperlcmd.exe -I C:/intelFPGA/18.0/quartus/bin64//perl/lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.0/quartus/sopc_builder/bin -I C:/intelfpga/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga/18.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=system_t3_nios2_gen2_0_cpu --dir=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0017_cpu_gen/ --quartus_bindir=C:/intelFPGA/18.0/quartus/bin64/ --verilog --config=C:/Users/User/AppData/Local/Temp/alt9257_8488398299930757708.dir/0017_cpu_gen//system_t3_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2022.09.22 10:01:50 (*) Starting Nios II generation
+Info: cpu: # 2022.09.22 10:01:50 (*)   Checking for plaintext license.
+Info: cpu: # 2022.09.22 10:01:51 (*)   Couldn't query license setup in Quartus directory C:/intelFPGA/18.0/quartus/bin64/
+Info: cpu: # 2022.09.22 10:01:51 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2022.09.22 10:01:51 (*)   Plaintext license not found.
+Info: cpu: # 2022.09.22 10:01:51 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2022.09.22 10:01:52 (*)   Couldn't query license setup in Quartus directory C:/intelFPGA/18.0/quartus/bin64/
+Info: cpu: # 2022.09.22 10:01:52 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2022.09.22 10:01:52 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: cpu: # 2022.09.22 10:01:52 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2022.09.22 10:01:52 (*)   Creating all objects for CPU
+Info: cpu: # 2022.09.22 10:01:52 (*)     Testbench
+Info: cpu: # 2022.09.22 10:01:53 (*)     Instruction decoding
+Info: cpu: # 2022.09.22 10:01:53 (*)       Instruction fields
+Info: cpu: # 2022.09.22 10:01:53 (*)       Instruction decodes
+Info: cpu: # 2022.09.22 10:01:53 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2022.09.22 10:01:53 (*)       Instruction controls
+Info: cpu: # 2022.09.22 10:01:53 (*)     Pipeline frontend
+Info: cpu: # 2022.09.22 10:01:53 (*)     Pipeline backend
+Info: cpu: # 2022.09.22 10:01:55 (*)   Generating RTL from CPU objects
+Info: cpu: # 2022.09.22 10:01:57 (*)   Creating encrypted RTL
+Info: cpu: # 2022.09.22 10:01:58 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'system_t3_nios2_gen2_0_cpu'
+Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
+Info: nios2_gen2_0_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_gen2_0_data_master_translator"
+Info: parallel_port_0_avalon_parallel_port_slave_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "parallel_port_0_avalon_parallel_port_slave_translator"
+Info: nios2_gen2_0_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_gen2_0_data_master_agent"
+Info: parallel_port_0_avalon_parallel_port_slave_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "parallel_port_0_avalon_parallel_port_slave_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_008: "mm_interconnect_0" instantiated altera_merlin_router "router_008"
+Info: router_009: "mm_interconnect_0" instantiated altera_merlin_router "router_009"
+Info: router_010: "mm_interconnect_0" instantiated altera_merlin_router "router_010"
+Info: master_0_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "master_0_master_limiter"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: sdram_controller_0_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "sdram_controller_0_s1_burst_adapter"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
+Info: cmd_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_003"
+Info: cmd_demux_005: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_005"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_002"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_003"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: cmd_mux_004: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_004"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_002"
+Info: rsp_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_004"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_003"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_005: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_005"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: nios2_gen2_0_data_master_to_sdram_controller_0_s1_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "nios2_gen2_0_data_master_to_sdram_controller_0_s1_cmd_width_adapter"
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/User/Documents/fpga/lectures/lecture_3/system_t3/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avalon_st_adapter_004: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_004"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: error_adapter_0: "avalon_st_adapter_004" instantiated error_adapter "error_adapter_0"
+Info: system_t3: Done "system_t3" with 56 modules, 91 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

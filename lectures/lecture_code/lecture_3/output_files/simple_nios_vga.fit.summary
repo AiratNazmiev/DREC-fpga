@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue Dec 20 14:03:16 2022
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : simple_nios_vga
+Top-level Entity Name : simple_nios_vga
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 5,622 / 6,272 ( 90 % )
+    Total combinational functions : 4,807 / 6,272 ( 77 % )
+    Dedicated logic registers : 3,568 / 6,272 ( 57 % )
+Total registers : 3636
+Total pins : 62 / 92 ( 67 % )
+Total virtual pins : 0
+Total memory bits : 149,296 / 276,480 ( 54 % )
+Embedded Multiplier 9-bit elements : 8 / 30 ( 27 % )
+Total PLLs : 1 / 2 ( 50 % )

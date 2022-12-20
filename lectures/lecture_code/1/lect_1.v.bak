@@ -1,0 +1,5 @@
+module lect_1(
+	input wire clk_50Mhz
+	);
+
+endmodule;

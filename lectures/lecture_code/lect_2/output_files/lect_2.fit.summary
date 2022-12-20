@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sat Dec 17 19:22:27 2022
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : lect_2
+Top-level Entity Name : lect_2
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 5,313 / 6,272 ( 85 % )
+    Total combinational functions : 4,527 / 6,272 ( 72 % )
+    Dedicated logic registers : 3,167 / 6,272 ( 50 % )
+Total registers : 3167
+Total pins : 1 / 92 ( 1 % )
+Total virtual pins : 0
+Total memory bits : 197,632 / 276,480 ( 71 % )
+Embedded Multiplier 9-bit elements : 8 / 30 ( 27 % )
+Total PLLs : 0 / 2 ( 0 % )

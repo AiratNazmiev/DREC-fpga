@@ -1,0 +1,5 @@
+module lect_2(
+	input clk_50
+	);
+	
+endmodule
